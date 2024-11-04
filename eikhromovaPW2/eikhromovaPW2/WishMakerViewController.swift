@@ -103,7 +103,6 @@ final class WishMakerViewController: UIViewController {
         description.pinLeft(view.safeAreaLayoutGuide.leadingAnchor, Constants.descriptionLeading)
         description.pinRight(view.safeAreaLayoutGuide.trailingAnchor, Constants.descriptionTrailing)
         description.pinTop(view.subviews[0].bottomAnchor, Constants.descriptionTop)
-
     }
     
     private func configureDescriptionList() {
@@ -179,9 +178,6 @@ final class WishMakerViewController: UIViewController {
         addWishButton.backgroundColor = .white
         addWishButton.layer.cornerRadius = Constants.buttonRadius
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
-        
-        
-        
     }
     
     @objc
@@ -192,6 +188,9 @@ final class WishMakerViewController: UIViewController {
     
     @objc
     private func addWishButtonPressed() {
-        // this will be done later!
+        let storingVC = WishStoringViewController()
+        storingVC.modalPresentationStyle = .fullScreen
+        storingVC.backgroundColor = view.backgroundColor
+        navigationController?.pushViewController(storingVC, animated: true)
     }
 }

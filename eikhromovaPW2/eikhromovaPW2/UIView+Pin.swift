@@ -72,6 +72,7 @@ extension UIView {
         widthAnchor.constraint(equalToConstant: const).isActive = true
     }
     
+    @discardableResult
     func setHeight(_ const: Double) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = heightAnchor.constraint(equalToConstant: const)
