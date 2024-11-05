@@ -1,16 +1,20 @@
 import UIKit
 
 final class WrittenWishCell: UITableViewCell {
-    static let reuseId: String = "WrittenWishCell"
     
+    // MARK: Enum(Constants)
     private enum Constants {
         static let wrapColor: UIColor = .white
-        static let wrapRadius: CGFloat = 16
+        static let wrapRadius: CGFloat = 8
         static let wrapOffsetV: CGFloat = 5
         static let wrapOffsetH: CGFloat = 10
-        static let wishLabelOffset: CGFloat = 8
+        static let wrapLabelOffset: CGFloat = 15
+        static let fontSize: CGFloat = 5
     }
         
+    // MARK: Fields
+    static let reuseId: String = "WrittenWishCell"
+    private let wrap: UIView = UIView()
     private let wishLabel: UILabel = UILabel()
     
     // MARK: - Lifecycle
@@ -31,7 +35,6 @@ final class WrittenWishCell: UITableViewCell {
     private func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear
-        let wrap: UIView = UIView()
         addSubview(wrap)
         wrap.backgroundColor = Constants.wrapColor
         wrap.layer.cornerRadius = Constants.wrapRadius
@@ -39,6 +42,6 @@ final class WrittenWishCell: UITableViewCell {
         wrap.pinHorizontal(to: self, Constants.wrapOffsetH)
         
         wrap.addSubview(wishLabel)
-        wishLabel.pin(to: wrap, Constants.wishLabelOffset)
+        wishLabel.pin(to: wrap, Constants.wrapLabelOffset)
     }
 }

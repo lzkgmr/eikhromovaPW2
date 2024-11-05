@@ -15,14 +15,12 @@ final class WishStoringViewController: UIViewController {
         static let tableOffsetV: CGFloat = 110
         static let tableOffsetH: CGFloat = 40
         static let numberOfSections: Int = 2
-        
-        static let firstWish: String = "I wish to add cells to the table"
     }
     
     // MARK: Fields
     var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
-    private var wishArray: [String] = [Constants.firstWish]
+    private var wishArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,10 +66,13 @@ extension WishStoringViewController: UITableViewDataSource {
         switch indexPath.section {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddWishCell.reuseId, for: indexPath) as! AddWishCell
+                cell.addWish = { [weak self] wish in
+                    self?.wishArray.append(wish)
+                    self?.table.reloadData()}
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: WrittenWishCell.reuseId, for: indexPath) as! WrittenWishCell
-                cell.configure(with: wishArray[indexPath.row])
+                cell.textLabel?.text = wishArray[indexPath.row]
                 return cell
             default:
                 return UITableViewCell()
