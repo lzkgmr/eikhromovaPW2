@@ -15,16 +15,19 @@ final class WishStoringViewController: UIViewController {
         static let tableOffsetV: CGFloat = 110
         static let tableOffsetH: CGFloat = 40
         static let numberOfSections: Int = 2
+        static let savedWishesKey: String = "savedWishes"
     }
     
     // MARK: Fields
     var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
     private var wishArray: [String] = []
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = backgroundColor ?? .white
+        loadWishes()
         configureTable()
     }
     
@@ -41,6 +44,16 @@ final class WishStoringViewController: UIViewController {
         table.register(WrittenWishCell.self, forCellReuseIdentifier: WrittenWishCell.reuseId)
         table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
 
+    }
+    
+    private func loadWishes() {
+        if let savedWishes = defaults.array(forKey: Constants.savedWishesKey) as? [String] {
+            wishArray = savedWishes
+        }
+    }
+    
+    private func saveWishes() {
+        defaults.set(wishArray, forKey: "savedWishes")
     }
 }
 
@@ -68,6 +81,7 @@ extension WishStoringViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddWishCell.reuseId, for: indexPath) as! AddWishCell
                 cell.addWish = { [weak self] wish in
                     self?.wishArray.append(wish)
+                    self?.saveWishes()
                     self?.table.reloadData()}
                 return cell
             case 1:
@@ -76,6 +90,14 @@ extension WishStoringViewController: UITableViewDataSource {
                 return cell
             default:
                 return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && indexPath.section == 1 {
+            wishArray.remove(at: indexPath.row)
+            saveWishes()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
