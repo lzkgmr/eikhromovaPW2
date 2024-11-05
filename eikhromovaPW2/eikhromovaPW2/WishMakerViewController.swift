@@ -10,13 +10,13 @@ import UIKit
 final class WishMakerViewController: UIViewController {
     
     // MARK: Enum(Constants)
-    enum Constants {
+    private enum Constants {
         static let sliderMin: Double = 0
         static let sliderMax: Double = 1
         static let numberOfLines: Int = 0
         
         static let titleFontSize: CGFloat = 32
-        static let titleTop: CGFloat = 30
+        static let titleTop: CGFloat = 0
         static let descriptionFontSize: CGFloat = 15
         static let descriptionLeading: CGFloat = 20
         static let descriptionTop: CGFloat = 10
@@ -29,7 +29,7 @@ final class WishMakerViewController: UIViewController {
         static let stackLeading: CGFloat = 20
         static let stackBottom: CGFloat = 70
         static let colorAlpha: CGFloat = 1.0
-        static let hideButtonTop: CGFloat = 38
+        static let hideButtonTop: CGFloat = 9
         static let hideButtonTrailing: CGFloat = 20
         static let buttonTitleFont: CGFloat = 12
         static let buttonRadius: CGFloat = 13
@@ -88,8 +88,8 @@ final class WishMakerViewController: UIViewController {
         title.textColor = UIColor.black
         
         view.addSubview(title)
-        title.pinCentreX(view.centerXAnchor)
-        title.pinTop(view.safeAreaLayoutGuide.topAnchor, Constants.titleTop)
+        title.pinCenterX(to: view.centerXAnchor)
+        title.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.titleTop)
     }
     
     private func configureDescription() {
@@ -100,9 +100,9 @@ final class WishMakerViewController: UIViewController {
         description.textColor = UIColor.black
         
         view.addSubview(description)
-        description.pinLeft(view.safeAreaLayoutGuide.leadingAnchor, Constants.descriptionLeading)
-        description.pinRight(view.safeAreaLayoutGuide.trailingAnchor, Constants.descriptionTrailing)
-        description.pinTop(view.subviews[0].bottomAnchor, Constants.descriptionTop)
+        description.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.descriptionLeading)
+        description.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.descriptionTrailing)
+        description.pinTop(to: view.subviews[0].bottomAnchor, Constants.descriptionTop)
     }
     
     private func configureDescriptionList() {
@@ -119,9 +119,9 @@ final class WishMakerViewController: UIViewController {
         list.textColor = UIColor.black
 
         view.addSubview(list)
-        list.pinLeft(view.safeAreaLayoutGuide.leadingAnchor, Constants.listLeading)
-        list.pinRight(view.safeAreaLayoutGuide.trailingAnchor, Constants.listTrailing)
-        list.pinTop(view.subviews[0].bottomAnchor, Constants.listTop)
+        list.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.listLeading)
+        list.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.listTrailing)
+        list.pinTop(to: view.subviews[0].bottomAnchor, Constants.listTop)
     }
     
     private func configureAddHideButton() {
@@ -135,8 +135,8 @@ final class WishMakerViewController: UIViewController {
         addHideButton.addTarget(self, action: #selector(slidersVisibility), for: .touchUpInside)
         
         view.addSubview(addHideButton)
-        addHideButton.pinTop(view.safeAreaLayoutGuide.topAnchor, Constants.hideButtonTop)
-        addHideButton.pinRight(view.safeAreaLayoutGuide.trailingAnchor, Constants.hideButtonTrailing)
+        addHideButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.hideButtonTop)
+        addHideButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.hideButtonTrailing)
     }
     
     private func configureSliders() {
@@ -152,9 +152,9 @@ final class WishMakerViewController: UIViewController {
             }
         }
         
-        stack.pinCentreX(view.centerXAnchor)
-        stack.pinLeft(view.safeAreaLayoutGuide.leadingAnchor, Constants.stackLeading)
-        stack.pinBottom(view.safeAreaLayoutGuide.bottomAnchor, Constants.stackBottom)
+        stack.pinCenterX(to: view.centerXAnchor)
+        stack.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.stackLeading)
+        stack.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.stackBottom)
     }
     
     private func updateBackgroundColor() {
@@ -170,9 +170,9 @@ final class WishMakerViewController: UIViewController {
     private func configureAddWishButton() {
         view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.buttonHeight)
-        addWishButton.pinBottom(view.safeAreaLayoutGuide.bottomAnchor, Constants.addButtonBottom)
-        addWishButton.pinLeft(view.safeAreaLayoutGuide.leadingAnchor, Constants.addButtonLeading)
-        addWishButton.pinRight(view.safeAreaLayoutGuide.trailingAnchor, Constants.addButtonTrailing)
+        addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.addButtonBottom)
+        addWishButton.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.addButtonLeading)
+        addWishButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.addButtonTrailing)
         addWishButton.setTitle(Constants.wishButtonText, for: .normal)
         addWishButton.setTitleColor(.systemPink, for: .normal)
         addWishButton.backgroundColor = .white

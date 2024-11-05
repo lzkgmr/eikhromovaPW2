@@ -1,107 +1,293 @@
 import UIKit
 
-//MARK: - Pins
+// MARK: - Pin methods
+/// Will throw exceptions when there is no common superview between constrained views.
 extension UIView {
-    func pinTop(_ otherView: UIView, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: otherView.topAnchor, constant: const).isActive = true
+    enum ConstraintMode {
+        case equal
+        /// greaterOrEqual
+        case grOE
+        /// lessOrEqual
+        case lsOE
     }
-    
-    func pinTop(_ anchor: NSLayoutYAxisAnchor, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: anchor, constant: const).isActive = true
+
+    enum PinSides {
+        case top, bottom, left, right
     }
-    
-    func pinBottom(_ otherView: UIView, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: -1 * const).isActive = true
-    }
-    
-    func pinBottom(_ anchor: NSLayoutYAxisAnchor, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        bottomAnchor.constraint(equalTo: anchor, constant: -1 * const).isActive = true
-    }
-    
-    func pinLeft(_ otherView: UIView, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: const).isActive = true
-    }
-    
-    func pinLeft(_ anchor: NSLayoutXAxisAnchor, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: anchor, constant: const).isActive = true // leading аналогично trailing
-    }
-    
-    func pinRight(_ otherView: UIView, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        trailingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: -1 * const).isActive = true
-    }
-    
-    func pinRight(_ anchor: NSLayoutXAxisAnchor, _ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        trailingAnchor.constraint(equalTo: anchor, constant: -1 * const).isActive = true // trailingAnchor == rightAnchor, но он работает в отличие от rightAnchor
-    }
-    
-    func pinCentreX(_ other: UIView, _ const: Double = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: other.centerXAnchor, constant: const).isActive = true
-    }
-    
-    func pinCentreX(_ anchor: NSLayoutXAxisAnchor, _ const: Double = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: anchor, constant: const).isActive = true
-    }
-    
-    func pinCentreY(_ other: UIView, _ const: Double = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        centerYAnchor.constraint(equalTo: other.centerYAnchor, constant: const).isActive = true
-    }
-    
-    func pinCentreY(_ anchor: NSLayoutYAxisAnchor, _ const: Double = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        centerYAnchor.constraint(equalTo: anchor, constant: const).isActive = true
-    }
-    
-    func pinCentre(_ otherView: UIView) {
-        pinCentreX(otherView)
-        pinCentreY(otherView)
-    }
-    
-    func setWidth(_ const: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalToConstant: const).isActive = true
-    }
-    
+
+    // MARK: - Pin left
     @discardableResult
-    func setHeight(_ const: Double) -> NSLayoutConstraint {
-        translatesAutoresizingMaskIntoConstraints = false
-        let constraint = heightAnchor.constraint(equalToConstant: const)
-        constraint.isActive = true
-        return constraint
+    /// Creates and activates a constraint from views leadingAnchor to otherView's leadingAnchor.
+    func pinLeft(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, leadingAnchor, otherView.leadingAnchor, constant: const)
     }
-    
-    func pinWidth(_ otherView: UIView, _ mult: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalTo: otherView.widthAnchor, multiplier: mult).isActive = true
+
+    @discardableResult
+    /// Creates and activates a constraint from views leadingAnchor to a given xAxisAnchor.
+    func pinLeft(
+        to anchor: NSLayoutXAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, leadingAnchor, anchor, constant: const)
     }
-    
-    func pinWidth(_ dimension: NSLayoutDimension, _ mult: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(equalTo: dimension, multiplier: mult).isActive = true
+
+    // MARK: - Pin right
+    @discardableResult
+    /// Creates and activates a constraint from views trailingAnchor to otherView's trailingAnchor.
+    func pinRight(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, trailingAnchor, otherView.trailingAnchor, constant: -1 * const)
     }
-    
-    func pinHeight(_ otherView: UIView, _ mult: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalTo: otherView.heightAnchor, multiplier: mult).isActive = true
+
+    @discardableResult
+    /// Creates and activates a constraint from views trailingAnchor to a given xAxisAnchor.
+    func pinRight(
+        to anchor: NSLayoutXAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, trailingAnchor, anchor, constant: -1 * const)
     }
-    
-    func pinHeight(_ dimension: NSLayoutDimension, _ mult: Double) {
-        translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalTo: dimension, multiplier: mult).isActive = true
+
+    // MARK: - Pin top
+    @discardableResult
+    /// Creates and activates a constraint from views topAnchor to otherView's topAnchor.
+    func pinTop(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, topAnchor, otherView.topAnchor, constant: const)
     }
-    
-    func pinHorizontal(_ otherView: UIView, _ const: Double = 0) {
-        pinLeft(otherView, const)
-        pinRight(otherView, const)
+
+    @discardableResult
+    /// Creates and activates a constraint from views topAnchor to a given xAxisAnchor.
+    func pinTop(
+        to anchor: NSLayoutYAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, topAnchor, anchor, constant: const)
+    }
+
+    // MARK: - Pin bottom
+    @discardableResult
+    /// Creates and activates a constraint from views bottomAnchor to otherView's bottomAnchor.
+    func pinBottom(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, bottomAnchor, otherView.bottomAnchor, constant: -1 * const)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views bottomAnchor to a given xAxisAnchor.
+    func pinBottom(
+        to anchor: NSLayoutYAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, bottomAnchor, anchor, constant: -1 * const)
+    }
+
+    // MARK: - Pin center
+    /// Creates and activates a constraint from views centerXAnchor to otherView's centerXAnchor.
+    func pinCenter(to otherView: UIView) {
+        pinConstraint(mode: .equal, centerXAnchor, otherView.centerXAnchor)
+        pinConstraint(mode: .equal, centerYAnchor, otherView.centerYAnchor)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views centerXAnchor to otherView's centerXAnchor.
+    func pinCenterX(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, centerXAnchor, otherView.centerXAnchor, constant: const)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views centerXAnchor to a given xAxisAnchor.
+    func pinCenterX(
+        to anchor: NSLayoutXAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, centerXAnchor, anchor, constant: const)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views centerYAnchor to otherView's centerYAnchor.
+    func pinCenterY(
+        to otherView: UIView,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, centerYAnchor, otherView.centerYAnchor, constant: const)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views centerYAnchor to a given yAxisAnchor.
+    func pinCenterY(
+        to anchor: NSLayoutYAxisAnchor,
+        _ const: Double = 0,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinConstraint(mode: mode, centerYAnchor, anchor, constant: const)
+    }
+
+    // MARK: - Pin width
+    @discardableResult
+    /// Creates and activates a constraint from views widthAnchor to otherView's widthAnchor.
+    func pinWidth(
+        to otherView: UIView,
+        _ mult: Double = 1,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinDimension(mode: mode, widthAnchor, otherView.widthAnchor, multiplier: mult)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views widthAnchor to a given NSLayoutDimension.
+    func pinWidth(
+        to anchor: NSLayoutDimension,
+        _ mult: Double = 1,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinDimension(mode: mode, widthAnchor, anchor, multiplier: mult)
+    }
+
+    @discardableResult
+    func setWidth(mode: ConstraintMode = .equal, _ const: Double) -> NSLayoutConstraint {
+        pinDimension(mode: mode, widthAnchor, constant: const)
+    }
+
+    // MARK: - Pin height
+    @discardableResult
+    /// Creates and activates a constraint from views heightAnchor to otherView's heightAnchor.
+    func pinHeight(
+        to otherView: UIView,
+        _ mult: Double = 1,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinDimension(mode: mode, heightAnchor, otherView.heightAnchor, multiplier: mult)
+    }
+
+    @discardableResult
+    /// Creates and activates a constraint from views heightAnchor to a given NSLayoutDimension.
+    func pinHeight(
+        to dimension: NSLayoutDimension,
+        _ mult: Double = 1,
+        _ mode: ConstraintMode = .equal
+    ) -> NSLayoutConstraint {
+        pinDimension(mode: mode, heightAnchor, dimension, multiplier: mult)
+    }
+
+    @discardableResult
+    func setHeight(mode: ConstraintMode = .equal, _ const: Double) -> NSLayoutConstraint {
+        pinDimension(mode: mode, heightAnchor, constant: const)
+    }
+
+    // MARK: - Pin utilities
+    func pinHorizontal(
+        to otherView: UIView,
+        _ const: Double = 0,
+        mode: ConstraintMode = .equal
+    ) {
+        pinLeft(to: otherView, const, mode)
+        pinRight(to: otherView, const, mode)
+    }
+
+    func pinVertical(
+        to otherView: UIView,
+        _ const: Double = 0,
+        mode: ConstraintMode = .equal
+    ) {
+        pinTop(to: otherView, const, mode)
+        pinBottom(to: otherView, const, mode)
+    }
+
+    func pin(to otherView: UIView, _ const: Double = 0) {
+        pinVertical(to: otherView, const)
+        pinHorizontal(to: otherView, const)
+    }
+
+    // MARK: - Private methods
+    @discardableResult
+    private func pinConstraint<Axis: AnyObject, AnyAnchor: NSLayoutAnchor<Axis>>(
+        mode: ConstraintMode,
+        _ firstAnchor: AnyAnchor,
+        _ secondAnchor: AnyAnchor,
+        constant: Double = 0
+    ) -> NSLayoutConstraint {
+        let const = CGFloat(constant)
+        let result: NSLayoutConstraint
+        translatesAutoresizingMaskIntoConstraints = false
+        switch mode {
+        case .equal:
+            result = firstAnchor.constraint(equalTo: secondAnchor, constant: const)
+        case .grOE:
+            result = firstAnchor.constraint(greaterThanOrEqualTo: secondAnchor, constant: const)
+        case .lsOE:
+            result = firstAnchor.constraint(lessThanOrEqualTo: secondAnchor, constant: const)
+        }
+
+        result.isActive = true
+        return result
+    }
+
+    @discardableResult
+    private func pinDimension(
+        mode: ConstraintMode,
+        _ firstDimension: NSLayoutDimension,
+        _ secondDimension: NSLayoutDimension,
+        multiplier: Double = 1
+    ) -> NSLayoutConstraint {
+        let mult = CGFloat(multiplier)
+        let result: NSLayoutConstraint
+        translatesAutoresizingMaskIntoConstraints = false
+        switch mode {
+        case .equal:
+            result = firstDimension.constraint(equalTo: secondDimension, multiplier: mult)
+        case .grOE:
+            result = firstDimension.constraint(greaterThanOrEqualTo: secondDimension, multiplier: mult)
+        case .lsOE:
+            result = firstDimension.constraint(lessThanOrEqualTo: secondDimension, multiplier: mult)
+        }
+
+        result.isActive = true
+        return result
+    }
+
+    @discardableResult
+    private func pinDimension(
+        mode: ConstraintMode,
+        _ dimension: NSLayoutDimension,
+        constant: Double
+    ) -> NSLayoutConstraint {
+        let const = CGFloat(constant)
+        let result: NSLayoutConstraint
+        translatesAutoresizingMaskIntoConstraints = false
+        switch mode {
+        case .equal:
+            result = dimension.constraint(equalToConstant: const)
+        case .grOE:
+            result = dimension.constraint(greaterThanOrEqualToConstant: const)
+        case .lsOE:
+            result = dimension.constraint(lessThanOrEqualToConstant: const)
+        }
+
+        result.isActive = true
+        return result
     }
 }
