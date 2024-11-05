@@ -14,12 +14,15 @@ final class WishStoringViewController: UIViewController {
         static let tableCornerRadius: CGFloat = 20
         static let tableOffsetV: CGFloat = 110
         static let tableOffsetH: CGFloat = 40
+        static let numberOfSections: Int = 2
+        
+        static let firstWish: String = "I wish to add cells to the table"
     }
     
     // MARK: Fields
     var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
-    private var wishArray: [String] = ["I wish to add cells to the table"]
+    private var wishArray: [String] = [Constants.firstWish]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,24 +40,41 @@ final class WishStoringViewController: UIViewController {
         table.pinVertical(to: view, Constants.tableOffsetV)
         table.pinHorizontal(to: view, Constants.tableOffsetH)
         
-        table.register(WrittenWishCell.self,forCellReuseIdentifier: WrittenWishCell.reuseId)
+        table.register(WrittenWishCell.self, forCellReuseIdentifier: WrittenWishCell.reuseId)
+        table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
+
     }
 }
 
 // MARK: - UITableViewDataSource
 extension WishStoringViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Constants.numberOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wishArray.count
+        switch section {
+            case 0:
+                return 1
+            case 1:
+                return wishArray.count
+            default:
+                return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: WrittenWishCell.reuseId, for: indexPath)
-        
-        guard let wishCell = cell as? WrittenWishCell else { return cell }
-        
-        wishCell.configure(with: wishArray[indexPath.row])
-        
-        return wishCell
+        switch indexPath.section {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AddWishCell.reuseId, for: indexPath) as! AddWishCell
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: WrittenWishCell.reuseId, for: indexPath) as! WrittenWishCell
+                cell.configure(with: wishArray[indexPath.row])
+                return cell
+            default:
+                return UITableViewCell()
+        }
     }
-    
 }

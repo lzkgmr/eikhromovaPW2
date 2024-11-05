@@ -13,6 +13,7 @@
 		88819A082CCFBD800051D85A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88819A062CCFBD800051D85A /* LaunchScreen.storyboard */; };
 		88819A102CCFC2190051D85A /* WishMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88819A0F2CCFC2190051D85A /* WishMakerViewController.swift */; };
 		888A21A22CDA342E00616EE4 /* WrittenWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A21A12CDA342E00616EE4 /* WrittenWishCell.swift */; };
+		888A21A42CDA3B9800616EE4 /* AddWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A21A32CDA3B9800616EE4 /* AddWishCell.swift */; };
 		888A77D32CD8FD2D00B284CE /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A77D22CD8FD2D00B284CE /* CustomSlider.swift */; };
 		888A77D62CD90BC800B284CE /* UIView+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A77D52CD90BC800B284CE /* UIView+Pin.swift */; };
 		888A77D82CD92D1400B284CE /* WishStoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888A77D72CD92D1400B284CE /* WishStoringViewController.swift */; };
@@ -27,6 +28,7 @@
 		88819A092CCFBD800051D85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88819A0F2CCFC2190051D85A /* WishMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishMakerViewController.swift; sourceTree = "<group>"; };
 		888A21A12CDA342E00616EE4 /* WrittenWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WrittenWishCell.swift; path = ../../../../.Trash/eikhromovaPW2/eikhromovaPW2/WrittenWishCell.swift; sourceTree = "<group>"; };
+		888A21A32CDA3B9800616EE4 /* AddWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddWishCell.swift; path = ../../../../AddWishCell.swift; sourceTree = "<group>"; };
 		888A77D22CD8FD2D00B284CE /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		888A77D52CD90BC800B284CE /* UIView+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Pin.swift"; sourceTree = "<group>"; };
 		888A77D72CD92D1400B284CE /* WishStoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishStoringViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				888A77D52CD90BC800B284CE /* UIView+Pin.swift */,
 				888A77D72CD92D1400B284CE /* WishStoringViewController.swift */,
 				888A21A12CDA342E00616EE4 /* WrittenWishCell.swift */,
+				888A21A32CDA3B9800616EE4 /* AddWishCell.swift */,
 			);
 			path = eikhromovaPW2;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888A21A42CDA3B9800616EE4 /* AddWishCell.swift in Sources */,
 				888A21A22CDA342E00616EE4 /* WrittenWishCell.swift in Sources */,
 				888A77D82CD92D1400B284CE /* WishStoringViewController.swift in Sources */,
 				888A77D62CD90BC800B284CE /* UIView+Pin.swift in Sources */,
