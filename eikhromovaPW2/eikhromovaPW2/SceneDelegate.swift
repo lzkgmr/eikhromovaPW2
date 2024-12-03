@@ -13,10 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let wishMakerVC = WishMakerViewController()
-        let navigationController = UINavigationController(rootViewController: wishMakerVC)
+        let rootViewController = Assembly.build()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
