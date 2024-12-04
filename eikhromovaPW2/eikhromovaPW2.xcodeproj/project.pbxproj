@@ -25,6 +25,7 @@
 		888F58AB2CDAB1F6007FB800 /* WishStoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F58AA2CDAB1F6007FB800 /* WishStoringViewController.swift */; };
 		888F58AD2CDAB20D007FB800 /* WrittenWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F58AC2CDAB20D007FB800 /* WrittenWishCell.swift */; };
 		888F58AF2CDAB2C0007FB800 /* AddWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F58AE2CDAB2C0007FB800 /* AddWishCell.swift */; };
+		88B606D02D00CF2400F9FE1F /* WishCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B606CF2D00CF2400F9FE1F /* WishCalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		888F58AA2CDAB1F6007FB800 /* WishStoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishStoringViewController.swift; sourceTree = "<group>"; };
 		888F58AC2CDAB20D007FB800 /* WrittenWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittenWishCell.swift; sourceTree = "<group>"; };
 		888F58AE2CDAB2C0007FB800 /* AddWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishCell.swift; sourceTree = "<group>"; };
+		88B606CF2D00CF2400F9FE1F /* WishCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		8805A4EA2CFFA795009B2B30 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				88B606CE2D00CEE000F9FE1F /* WishCalendarScene */,
 				8805A4EC2CFFA7CB009B2B30 /* WishStoringScene */,
 				8805A4EB2CFFA7B5009B2B30 /* WishMakerScene */,
 			);
@@ -133,6 +136,14 @@
 				888F58A82CDAB1D3007FB800 /* UIView+Pin.swift */,
 			);
 			path = eikhromovaPW2;
+			sourceTree = "<group>";
+		};
+		88B606CE2D00CEE000F9FE1F /* WishCalendarScene */ = {
+			isa = PBXGroup;
+			children = (
+				88B606CF2D00CF2400F9FE1F /* WishCalendarViewController.swift */,
+			);
+			path = WishCalendarScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 				888F58AB2CDAB1F6007FB800 /* WishStoringViewController.swift in Sources */,
 				8805A4F32CFFA999009B2B30 /* Interactor.swift in Sources */,
 				8805A4EF2CFFA926009B2B30 /* Protocols.swift in Sources */,
+				88B606D02D00CF2400F9FE1F /* WishCalendarViewController.swift in Sources */,
 				888F58A92CDAB1D3007FB800 /* UIView+Pin.swift in Sources */,
 				888F58912CDAB04B007FB800 /* AppDelegate.swift in Sources */,
 				888F58932CDAB04B007FB800 /* SceneDelegate.swift in Sources */,

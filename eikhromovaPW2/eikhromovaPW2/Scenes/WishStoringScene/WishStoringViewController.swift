@@ -18,7 +18,7 @@ final class WishStoringViewController: UIViewController {
     }
     
     // MARK: Fields
-    var backgroundColor: UIColor?
+    internal var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
     private var wishArray: [String] = []
     private let defaults = UserDefaults.standard

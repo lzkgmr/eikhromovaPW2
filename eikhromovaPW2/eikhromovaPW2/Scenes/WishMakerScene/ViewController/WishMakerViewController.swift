@@ -13,8 +13,9 @@ final class WishMakerViewController: UIViewController {
     internal var isSlidersHidden = false
     let interactor: BusinessLogic
     internal let stack: UIStackView = UIStackView()
-    internal let addHideButton: UIButton = UIButton(type: .system)
+    internal let hideButton: UIButton = UIButton(type: .system)
     internal let addWishButton: UIButton = UIButton(type: .system)
+    internal let scheduleButton: UIButton = UIButton(type: .system)
     internal var sliders = [CustomSlider]()
     
     // MARK: - Initialization
@@ -45,6 +46,7 @@ final class WishMakerViewController: UIViewController {
         configureAddHideButton()
         configureSliders()
         configureAddWishButton()
+        configureScheduleButton()
     }
     
     @objc
@@ -59,5 +61,13 @@ final class WishMakerViewController: UIViewController {
         storingVC.modalPresentationStyle = .fullScreen
         storingVC.backgroundColor = view.backgroundColor
         navigationController?.pushViewController(storingVC, animated: true)
+    }
+    
+    @objc
+    internal func scheduleWishButtonPressed() {
+        let calendarVC = WishCalendarViewController()
+        calendarVC.modalPresentationStyle = .fullScreen
+        calendarVC.backgroundColor = view.backgroundColor
+        navigationController?.pushViewController(calendarVC, animated: true)
     }
 }

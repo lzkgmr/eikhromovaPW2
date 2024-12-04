@@ -9,8 +9,6 @@ import Foundation
 
 // MARK: Enum(Constants)
 internal enum Constants {
-    static let sliderMin: Double = 0
-    static let sliderMax: Double = 1
     static let numberOfLines: Int = 0
     
     static let titleFontSize: CGFloat = 32
@@ -25,7 +23,7 @@ internal enum Constants {
     static let listTrailing: CGFloat = 10
     static let stackRadius: CGFloat = 20
     static let stackLeading: CGFloat = 20
-    static let stackBottom: CGFloat = 70
+    static let stackBottom: CGFloat = 110
     static let colorAlpha: CGFloat = 1.0
     static let hideButtonTop: CGFloat = 9
     static let hideButtonTrailing: CGFloat = 20
@@ -34,10 +32,18 @@ internal enum Constants {
     static let buttonBorderWidth: CGFloat = 1
     static let buttonHeight: CGFloat = 35
     static let animationTime: CGFloat = 0.5
-    static let addButtonBottom: CGFloat = 10
+    
+    // addButton
+    static let addButtonBottom: CGFloat = 60
     static let addButtonLeading: CGFloat = 20
     static let addButtonTrailing: CGFloat = 20
     
+    // scheduleButton
+    static let scheduleButtonBottom: CGFloat = 10
+    static let scheduleButtonLeading: CGFloat = 20
+    static let scheduleButtonTrailing: CGFloat = 20
+    
+    // Strings
     static let red: String = "Red"
     static let green: String = "Green"
     static let blue: String = "Blue"
@@ -49,8 +55,11 @@ internal enum Constants {
     static let fatalErrorText: String = "init(coder:) has not been implemented"
     static let hideButtonText: String = " Hide sliders "
     static let wishButtonText: String = " My wishes "
+    static let scheduleButtonText: String = " Schedule wish granting "
     
     // Sliders
+    static let sliderMin: Double = 0
+    static let sliderMax: Double = 1
     static let titleViewTop: CGFloat = 10
     static let titlViewLeading: CGFloat = 20
     static let sliderBottom: CGFloat = -10

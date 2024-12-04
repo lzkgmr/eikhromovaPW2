@@ -57,18 +57,18 @@ extension WishMakerViewController {
     
     // MARK: - Hide Button Configuration
     internal func configureAddHideButton() {
-        addHideButton.setTitle(Constants.hideButtonText, for: .normal)
-        addHideButton.setTitleColor(.black, for: .normal)
-        addHideButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: Constants.buttonTitleFont)
-        addHideButton.backgroundColor = .clear
-        addHideButton.layer.cornerRadius = Constants.buttonRadius
-        addHideButton.layer.borderWidth = Constants.buttonBorderWidth
-        addHideButton.layer.borderColor = UIColor.black.cgColor
-        addHideButton.addTarget(self, action: #selector(slidersVisibility), for: .touchUpInside)
+        hideButton.setTitle(Constants.hideButtonText, for: .normal)
+        hideButton.setTitleColor(.black, for: .normal)
+        hideButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: Constants.buttonTitleFont)
+        hideButton.backgroundColor = .clear
+        hideButton.layer.cornerRadius = Constants.buttonRadius
+        hideButton.layer.borderWidth = Constants.buttonBorderWidth
+        hideButton.layer.borderColor = UIColor.black.cgColor
+        hideButton.addTarget(self, action: #selector(slidersVisibility), for: .touchUpInside)
         
-        view.addSubview(addHideButton)
-        addHideButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.hideButtonTop)
-        addHideButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.hideButtonTrailing)
+        view.addSubview(hideButton)
+        hideButton.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.hideButtonTop)
+        hideButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.hideButtonTrailing)
     }
     
     // MARK: - Sliders Configuration
@@ -90,13 +90,31 @@ extension WishMakerViewController {
     internal func configureAddWishButton() {
         view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.buttonHeight)
+        
         addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.addButtonBottom)
         addWishButton.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.addButtonLeading)
         addWishButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.addButtonTrailing)
+        
         addWishButton.setTitle(Constants.wishButtonText, for: .normal)
         addWishButton.setTitleColor(.systemPink, for: .normal)
         addWishButton.backgroundColor = .white
         addWishButton.layer.cornerRadius = Constants.buttonRadius
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
+    }
+    
+    // MARK: - Schedule Button Configuration
+    internal func configureScheduleButton() {
+        view.addSubview(scheduleButton)
+        scheduleButton.setHeight(Constants.buttonHeight)
+        
+        scheduleButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.scheduleButtonBottom)
+        scheduleButton.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.scheduleButtonLeading)
+        scheduleButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.scheduleButtonLeading)
+        
+        scheduleButton.setTitle(Constants.scheduleButtonText, for: .normal)
+        scheduleButton.setTitleColor(.systemPink, for: .normal)
+        scheduleButton.backgroundColor = .white
+        scheduleButton.layer.cornerRadius = Constants.buttonRadius
+        scheduleButton.addTarget(self, action: #selector(scheduleWishButtonPressed), for: .touchUpInside)
     }
 }
