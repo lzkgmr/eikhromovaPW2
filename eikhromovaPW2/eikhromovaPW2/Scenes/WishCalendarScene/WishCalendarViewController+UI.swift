@@ -3,6 +3,16 @@ import UIKit
 // MARK: - WishCalendarViewController Extensions
 extension WishCalendarViewController {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let contentInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 60)
+        static let collectionTop: CGFloat = 15
+        static let collectionBottom: CGFloat = 15
+        static let addEventButton: String = "calendar.badge.plus"
+        static let reuseIdentifier: String = "WishEventCell"
+        static let backButton: String = "chevron.left"
+    }
+    
     // MARK: - Collection View Configuration
     internal func configureCollection() {
         view.addSubview(collectionView)

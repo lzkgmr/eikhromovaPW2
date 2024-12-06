@@ -3,6 +3,12 @@ import UIKit
 // MARK: - WishEventCell
 class WishEventCell: UICollectionViewCell {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let reuseIdentifier: String = "WishEventCell"
+        static let fatalErrorText: String = "init(coder:) has not been implemented"
+    }
+    
     // MARK: - Properties
     internal let wrapView: UIView = UIView()
     internal let titleLabel: UILabel = UILabel()

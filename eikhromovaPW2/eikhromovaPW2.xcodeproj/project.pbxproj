@@ -14,7 +14,6 @@
 		8805A4F72CFFAA0F009B2B30 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8805A4F62CFFAA0F009B2B30 /* Models.swift */; };
 		8805A4FB2CFFAC02009B2B30 /* WishMakerViewController+Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8805A4FA2CFFAC02009B2B30 /* WishMakerViewController+Slider.swift */; };
 		8805A4FD2CFFACBF009B2B30 /* WishMakerViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8805A4FC2CFFACBF009B2B30 /* WishMakerViewController+UI.swift */; };
-		8805A4FF2CFFAD78009B2B30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8805A4FE2CFFAD78009B2B30 /* Constants.swift */; };
 		8822E0FF2D0246FB00B76C04 /* WishEventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8822E0FD2D0246FB00B76C04 /* WishEventModel.xcdatamodeld */; };
 		8822E1022D024AC000B76C04 /* WishCalendarViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822E1012D024AC000B76C04 /* WishCalendarViewController+Data.swift */; };
 		888E9F1E2D022557003653CB /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E9F1D2D022557003653CB /* PaddedTextField.swift */; };
@@ -46,7 +45,6 @@
 		8805A4F62CFFAA0F009B2B30 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8805A4FA2CFFAC02009B2B30 /* WishMakerViewController+Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishMakerViewController+Slider.swift"; sourceTree = "<group>"; };
 		8805A4FC2CFFACBF009B2B30 /* WishMakerViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishMakerViewController+UI.swift"; sourceTree = "<group>"; };
-		8805A4FE2CFFAD78009B2B30 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8822E0FE2D0246FB00B76C04 /* WishEventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WishEventModel.xcdatamodel; sourceTree = "<group>"; };
 		8822E1012D024AC000B76C04 /* WishCalendarViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishCalendarViewController+Data.swift"; sourceTree = "<group>"; };
 		888E9F1D2D022557003653CB /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				888F589B2CDAB04D007FB800 /* LaunchScreen.storyboard */,
 				888F589E2CDAB04D007FB800 /* Info.plist */,
 				888F58A82CDAB1D3007FB800 /* UIView+Pin.swift */,
-				8805A4FE2CFFAD78009B2B30 /* Constants.swift */,
 				88A38FC32D03925400894BB5 /* CoreDataManager.swift */,
 			);
 			path = eikhromovaPW2;
@@ -275,7 +272,6 @@
 				AA867B052D01ECF000AC3FBD /* WishEventCreationViewController.swift in Sources */,
 				8805A4FB2CFFAC02009B2B30 /* WishMakerViewController+Slider.swift in Sources */,
 				8822E1022D024AC000B76C04 /* WishCalendarViewController+Data.swift in Sources */,
-				8805A4FF2CFFAD78009B2B30 /* Constants.swift in Sources */,
 				888F58AB2CDAB1F6007FB800 /* WishStoringViewController.swift in Sources */,
 				8822E0FF2D0246FB00B76C04 /* WishEventModel.xcdatamodeld in Sources */,
 				8805A4F32CFFA999009B2B30 /* Interactor.swift in Sources */,

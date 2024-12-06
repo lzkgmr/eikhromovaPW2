@@ -2,6 +2,24 @@ import UIKit
 
 final class AddWishCell: UITableViewCell {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let labelText: String = "Add a new wish"
+        static let wishPrompt: String = "Write your wish here to add..."
+        static let addButtonTitle: String = "Add wish"
+        static let fatalErrorText: String = "init(coder:) has not been implemented"
+        static let addButtonRadius: CGFloat = 15
+        static let textViewRadius: CGFloat = 10
+        static let wishTextHeight: CGFloat = 60
+        static let wishTextTop: CGFloat = 10
+        static let wishTextLeading: CGFloat = 10
+        static let wishTextTrailing: CGFloat = 10
+        static let addWishHeight: CGFloat = 35
+        static let addWishWidth: CGFloat = 110
+        static let addWishTop: CGFloat = 10
+        static let addWishBottom: CGFloat = 10
+    }
+    
     // MARK: - Properties
     static let reuseId = "AddWishCell"
     var addWish: ((String) -> Void)?

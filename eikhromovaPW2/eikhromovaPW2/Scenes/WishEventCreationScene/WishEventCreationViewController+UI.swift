@@ -4,6 +4,29 @@ import UIKit
 // MARK: - UI Configuration Extension
 extension WishEventCreationViewController {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let stackViewSpacing: CGFloat = 16
+        static let stackViewTop: CGFloat = 200
+        static let stackViewHorizontal: CGFloat = 20
+        static let titleLabelPlaceholder: String = "Enter event's name"
+        static let titleLabelCornerRadius: CGFloat = 15
+        static let titleLabelBorderWidth: CGFloat = 1
+        static let titleLabelHeight: CGFloat = 48
+        static let titlePaddingViewWidth: CGFloat = 10
+        static let descriptionLabelPlaceholder: String = "Enter event's description"
+        static let descriptionLabelCornerRadius: CGFloat = 15
+        static let descriptionLabelBorderWidth: CGFloat = 1
+        static let descriptionLabelHeight: CGFloat = 48
+        static let descriptionPaddingViewWidth: CGFloat = 10
+
+        static let saveButtonHeight: CGFloat = 48
+        static let saveButtonWidth: CGFloat = 200
+        static let saveButtonBottom: CGFloat = 10
+        static let saveButtonCornerRadius: CGFloat = 15
+        static let saveButtonTitle: String = "Save event"
+    }
+    
     // MARK: - Stack View Configuration
     internal func configureStack() {
         configureTitleField()

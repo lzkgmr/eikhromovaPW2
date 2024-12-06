@@ -2,6 +2,17 @@ import UIKit
 
 extension WishMakerViewController {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let red: String = "Red"
+        static let green: String = "Green"
+        static let blue: String = "Blue"
+        static let sliderMin: Double = 0
+        static let sliderMax: Double = 1
+        static let animationTime: CGFloat = 0.5
+        static let colorAlpha: CGFloat = 1.0
+    }
+    
     // MARK: - Slider Creation
     internal func createSliders() -> [CustomSlider] {
         return [

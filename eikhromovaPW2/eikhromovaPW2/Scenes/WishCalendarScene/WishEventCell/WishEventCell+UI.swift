@@ -3,6 +3,21 @@ import UIKit
 // MARK: - UI Configuration Extension
 extension WishEventCell {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let wrapCornerRadius: CGFloat = 15
+        static let wrapOffset: CGFloat = 8
+        static let eventCellTitleFont: CGFloat = 25
+        static let eventCellTitleTop: CGFloat = 16
+        static let eventCellNumberOfLines: Int = 1
+        static let eventCellDescriptionFont: CGFloat = 12
+        static let eventCellDescriptionLeading: CGFloat = 12
+        static let eventCellDescriptionTop: CGFloat = 16
+        static let dateFont: CGFloat = 12
+        static let dateTop: CGFloat = 16
+        static let dateLeading: CGFloat = 12
+        static let endDateBottom: CGFloat = 16
+    }
     // MARK: - Wrap View Configuration
     internal func configureWrap() {
         contentView.addSubview(wrapView)

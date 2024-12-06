@@ -3,6 +3,13 @@ import UIKit
 // MARK: - WishCalendarViewController
 final class WishCalendarViewController: UIViewController, UICollectionViewDelegate {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let collectionHeight: CGFloat = 200
+        static let minusToCollectionWidth: CGFloat = 40
+        static let reuseIdentifier: String = "WishEventCell"
+    }
+    
     // MARK: - Properties
     internal var backgroundColor: UIColor?
     internal let collectionView: UICollectionView = UICollectionView(

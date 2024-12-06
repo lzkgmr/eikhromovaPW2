@@ -2,6 +2,11 @@ import UIKit
 
 final class WishMakerViewController: UIViewController {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let fatalErrorText: String = "init(coder:) has not been implemented"
+    }
+    
     // MARK: - Properties
     internal var isSlidersHidden = false
     let interactor: BusinessLogic

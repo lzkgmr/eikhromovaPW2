@@ -2,6 +2,15 @@ import UIKit
 
 final class CustomSlider: UIView {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let titleViewTop: CGFloat = 10
+        static let titlViewLeading: CGFloat = 20
+        static let sliderBottom: CGFloat = -10
+        static let sliderLeading: CGFloat = 20
+        static let fatalErrorText: String = "init(coder:) has not been implemented"
+    }
+    
     // MARK: - Properties
     var valueChanged: ((Double) -> Void)?
     var slider = UISlider()

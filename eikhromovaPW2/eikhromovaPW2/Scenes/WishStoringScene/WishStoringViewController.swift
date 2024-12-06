@@ -2,6 +2,21 @@ import UIKit
 
 final class WishStoringViewController: UIViewController {
     
+    // MARK: - Constants
+    private enum Constants {
+        static let tableCornerRadius: CGFloat = 20
+        static let tableOffsetV: CGFloat = 110
+        static let tableOffsetH: CGFloat = 40
+        static let numberOfSections: Int = 2
+        static let savedWishesKey: String = "savedWishes"
+        static let editWindowTitle: String = "Edit the wish"
+        static let editWindowMessage: String = "Change the wish's description"
+        static let saveTitle: String = "Save"
+        static let cancelTitle: String = "Cancel"
+        static let editTitle: String = "Edit"
+        static let deleteTotle: String = "Delete"
+        static let backButton: String = "chevron.left"
+    }
     // MARK: - Properties
     internal var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
