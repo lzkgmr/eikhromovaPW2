@@ -1,15 +1,9 @@
-//
-//  WishCalendarViewController+UI.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - WishCalendarViewController Extensions
 extension WishCalendarViewController {
     
-    // MARK: - CollectionView Configuration
+    // MARK: - Collection View Configuration
     internal func configureCollection() {
         view.addSubview(collectionView)
         collectionView.delegate = self
@@ -18,22 +12,21 @@ extension WishCalendarViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = Constants.contentInset
-         
-        if let layout = collectionView.collectionViewLayout as?
-        UICollectionViewFlowLayout {
+        
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.minimumInteritemSpacing = 0
             layout.minimumLineSpacing = 0
             layout.invalidateLayout()
         }
-
+        
         collectionView.register(WishEventCell.self, forCellWithReuseIdentifier: Constants.reuseIdentifier)
-
+        
         collectionView.pinHorizontal(to: view)
         collectionView.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.collectionBottom)
         collectionView.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.collectionTop)
     }
     
-    // MARK: Navigation Bar Appearance Configuration
+    // MARK: - Navigation Bar Configuration
     internal func configureNavigationBarAppearance() {
         let backButton = UIBarButtonItem(image: UIImage(systemName: Constants.backButton), style: .plain, target: self, action: #selector(backButtonPressed(_:)))
         navigationItem.leftBarButtonItem = backButton
@@ -41,7 +34,7 @@ extension WishCalendarViewController {
         let addEventButton = UIBarButtonItem(image: UIImage(systemName: Constants.addEventButton), style: .plain, target: self, action: #selector(addButtonPressed(_:)))
         navigationItem.rightBarButtonItem = addEventButton
         
-        // Убираем белую подсветку barButtons при свайпе
+        // Removing the white highlight on bar buttons during swipe gestures
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .clear
@@ -50,4 +43,3 @@ extension WishCalendarViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 }
-

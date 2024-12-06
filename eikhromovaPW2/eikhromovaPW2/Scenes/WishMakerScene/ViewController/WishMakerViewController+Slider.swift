@@ -1,15 +1,8 @@
-//
-//  WishMakerViewController+Slider.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
-// MARK: - Slider's Methods
 extension WishMakerViewController {
     
+    // MARK: - Slider Creation
     internal func createSliders() -> [CustomSlider] {
         return [
             CustomSlider(title: Constants.red, min: Constants.sliderMin, max: Constants.sliderMax),
@@ -18,6 +11,7 @@ extension WishMakerViewController {
         ]
     }
     
+    // MARK: - Slider Actions Setup
     internal func setupSlidersActions(_ sliders: [CustomSlider]) {
         for slider in sliders {
             stack.addArrangedSubview(slider)
@@ -27,6 +21,7 @@ extension WishMakerViewController {
         }
     }
     
+    // MARK: - Background Color Update
     internal func updateBackgroundColor() {
         let redValue = CGFloat(sliders[0].slider.value)
         let greenValue = CGFloat(sliders[1].slider.value)
@@ -38,5 +33,4 @@ extension WishMakerViewController {
             self.view.backgroundColor = newColor
         }
     }
-
 }

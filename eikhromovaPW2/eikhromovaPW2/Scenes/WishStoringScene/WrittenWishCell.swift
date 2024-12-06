@@ -2,7 +2,7 @@ import UIKit
 
 final class WrittenWishCell: UITableViewCell {
     
-    // MARK: Enum(Constants)
+    // MARK: - Constants
     private enum Constants {
         static let wrapColor: UIColor = .white
         static let wrapRadius: CGFloat = 8
@@ -12,13 +12,13 @@ final class WrittenWishCell: UITableViewCell {
         static let fontSize: CGFloat = 5
         static let fatalError: String = "init(coder:) has not been implemented"
     }
-        
-    // MARK: Fields
+    
+    // MARK: - Properties
     static let reuseId: String = "WrittenWishCell"
     private let wrap: UIView = UIView()
     private let wishLabel: UILabel = UILabel()
     
-    // MARK: - Lifecycle
+    // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
@@ -29,10 +29,12 @@ final class WrittenWishCell: UITableViewCell {
         fatalError(Constants.fatalError)
     }
     
+    // MARK: - Public Methods
     func configure(with wish: String) {
         wishLabel.text = wish
     }
     
+    // MARK: - Private Methods
     private func configureUI() {
         selectionStyle = .none
         backgroundColor = .clear

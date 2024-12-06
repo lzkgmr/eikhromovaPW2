@@ -1,19 +1,13 @@
-//
-//  WishMakerProtocols.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - Business Logic Protocol
 protocol BusinessLogic {
     func loadBackground(_ request: WishMakerModel.BackgroundColor.Request)
     
     func loadWishStoring()
 }
 
-
+// MARK: - Presentation Logic Protocol
 protocol PresentationLogic {
     func presenBackground(_ response: WishMakerModel.BackgroundColor.Response)
     

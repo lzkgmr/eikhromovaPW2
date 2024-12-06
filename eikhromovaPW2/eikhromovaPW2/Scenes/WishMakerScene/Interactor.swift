@@ -1,20 +1,17 @@
-//
-//  WishMakerInteractor.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - WishMakerInteractor
 final class WishMakerInteractor: BusinessLogic {
     
+    // MARK: Properties
     private let presenter: PresentationLogic
     
+    // MARK: Initializer
     init(presenter: PresentationLogic) {
         self.presenter = presenter
     }
     
+    // MARK: Business Logic
     func loadBackground(_ request: WishMakerModel.BackgroundColor.Request) {
         let red = request.red
         let green = request.green

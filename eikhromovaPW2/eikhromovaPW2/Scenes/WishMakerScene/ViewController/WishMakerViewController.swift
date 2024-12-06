@@ -1,15 +1,8 @@
-//
-//  WishMakerViewController.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 28.10.2024.
-//
-
 import UIKit
 
 final class WishMakerViewController: UIViewController {
     
-    // MARK: Fields
+    // MARK: - Properties
     internal var isSlidersHidden = false
     let interactor: BusinessLogic
     internal let stack: UIStackView = UIStackView()
@@ -18,7 +11,7 @@ final class WishMakerViewController: UIViewController {
     internal let scheduleButton: UIButton = UIButton(type: .system)
     internal var sliders = [CustomSlider]()
     
-    // MARK: - Initialization
+    // MARK: - Initializer
     init(interactor: BusinessLogic) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
@@ -29,7 +22,7 @@ final class WishMakerViewController: UIViewController {
         fatalError(Constants.fatalErrorText)
     }
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -39,6 +32,7 @@ final class WishMakerViewController: UIViewController {
         return .portrait
     }
     
+    // MARK: - UI Configuration
     private func configureUI() {
         view.backgroundColor = .systemBrown
         configureTitle()
@@ -50,6 +44,7 @@ final class WishMakerViewController: UIViewController {
         configureScheduleButton()
     }
     
+    // MARK: - Actions
     @objc
     internal func slidersVisibility() {
         isSlidersHidden.toggle()

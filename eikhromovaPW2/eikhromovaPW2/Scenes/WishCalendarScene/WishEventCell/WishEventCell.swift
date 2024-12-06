@@ -1,22 +1,16 @@
-//
-//  WishEventCell.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - WishEventCell
 class WishEventCell: UICollectionViewCell {
     
-    // MARK: - Fields
+    // MARK: - Properties
     internal let wrapView: UIView = UIView()
     internal let titleLabel: UILabel = UILabel()
     internal let descriptionLabel: UILabel = UILabel()
     internal let startDateLabel: UILabel = UILabel()
     internal let endDateLabel: UILabel = UILabel()
     
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -27,15 +21,14 @@ class WishEventCell: UICollectionViewCell {
         configureEndDateLabel()
     }
     
-    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError(Constants.fatalErrorText)
     }
     
-    // MARK: - Cell Configuration
+    // MARK: - Configuration
     func configure(with event: WishEventModel) {
-        // Removing +0000 in date
+        // MARK: - Date Formatting
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy HH:mm"
         formatter.timeZone = .current

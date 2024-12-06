@@ -1,15 +1,9 @@
-//
-//  WishCalendarViewController.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - WishCalendarViewController
 final class WishCalendarViewController: UIViewController, UICollectionViewDelegate {
     
-    // MARK: - Fields
+    // MARK: - Properties
     internal var backgroundColor: UIColor?
     internal let collectionView: UICollectionView = UICollectionView(
         frame: .zero,
@@ -32,6 +26,7 @@ final class WishCalendarViewController: UIViewController, UICollectionViewDelega
         loadEvents()
     }
     
+    // MARK: - Actions
     @objc
     internal func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)

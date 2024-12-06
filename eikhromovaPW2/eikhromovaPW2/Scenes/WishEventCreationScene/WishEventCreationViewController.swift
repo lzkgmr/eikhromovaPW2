@@ -6,9 +6,10 @@ protocol WishEventCreationDelegate: AnyObject {
     func didSetEvent(_ event: WishEventModel)
 }
 
+// MARK: - WishEventCreationViewController
 class WishEventCreationViewController: UIViewController {
     
-    // MARK: - Fields
+    // MARK: - Properties
     private let calendarManager: CalendarEventManager = CalendarManager()
     weak var delegate: WishEventCreationDelegate?
     
@@ -31,14 +32,21 @@ class WishEventCreationViewController: UIViewController {
         configureUI()
     }
     
-    // MARK: - Private methods
+    // MARK: - Private Methods
     private func configureUI() {
         configureStack()
         configureSaveButton()
     }
     
     @objc
+    private func dismissKeyboard() {
+        // MARK: - Dismiss Keyboard
+        view.endEditing(true)
+    }
+    
+    @objc
     internal func saveButtonPressed(_ sender: UIButton) {
+        // MARK: - Save Button Action
         guard let title = titleField.text, !title.isEmpty,
               let description = descriptionField.text, !description.isEmpty else {
             return
@@ -56,10 +64,5 @@ class WishEventCreationViewController: UIViewController {
             delegate?.didSetEvent(event)
             dismiss(animated: true, completion: nil)
         } else { }
-    }
-    
-    @objc
-    private func dismissKeyboard() {
-        view.endEditing(true)
     }
 }

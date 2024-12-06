@@ -1,11 +1,12 @@
-
 import UIKit
 import EventKit
 
+// MARK: - CalendarEventManager Protocol
 protocol CalendarEventManager {
     func create(eventModel: WishEventModel) -> Bool
 }
 
+// MARK: - WishEventModel
 struct WishEventModel {
     var title: String
     var description: String
@@ -14,11 +15,13 @@ struct WishEventModel {
     var note: String?
 }
 
+// MARK: - CalendarManager
 final class CalendarManager: CalendarEventManager {
-    // MARK: - Variables
-    private let eventStore : EKEventStore = EKEventStore()
     
-    // MARK: - Public methods
+    // MARK: - Properties
+    private let eventStore: EKEventStore = EKEventStore()
+    
+    // MARK: - Public Methods
     func create(eventModel: WishEventModel) -> Bool {
         var result: Bool = false
         let group = DispatchGroup()
@@ -30,18 +33,17 @@ final class CalendarManager: CalendarEventManager {
         }
         
         group.wait()
-        
         return result
     }
     
     func create(eventModel: WishEventModel, completion: ((Bool) -> Void)?) {
-        let createEvent: EKEventStoreRequestAccessCompletionHandler = { [weak self] (granted,
-                                                                                     error) in
-            guard granted, error == nil, let self else {
+        let createEvent: EKEventStoreRequestAccessCompletionHandler = { [weak self] (granted, error) in
+            guard granted, error == nil, let self = self else {
                 completion?(false)
                 return
             }
             
+            // MARK: - Event Creation
             let event: EKEvent = EKEvent(eventStore: self.eventStore)
             
             event.title = eventModel.title
@@ -52,17 +54,18 @@ final class CalendarManager: CalendarEventManager {
             
             do {
                 try self.eventStore.save(event, span: .thisEvent)
+                completion?(true)
             } catch let error as NSError {
-                print("failed to save event with error : \(error)")
+                print("Failed to save event with error: \(error)")
                 completion?(false)
             }
-            
-            completion?(true)
         }
-        if #available(iOS 17.0, *) {
-            eventStore.requestFullAccessToEvents(completion: createEvent)
-        } else {
+        
+        // MARK: - Request Access
+//        if #available(iOS 17.0, *) {
+//            eventStore.requestFullAccessToEvents(completion: createEvent)
+//        } else {
             eventStore.requestAccess(to: .event, completion: createEvent)
-        }
+//        }
     }
 }

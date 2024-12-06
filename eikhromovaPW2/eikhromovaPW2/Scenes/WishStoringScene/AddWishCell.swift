@@ -2,10 +2,11 @@ import UIKit
 
 final class AddWishCell: UITableViewCell {
     
-    // MARK: Fields
+    // MARK: - Properties
     static let reuseId = "AddWishCell"
     var addWish: ((String) -> Void)?
     
+    // MARK: - UI Elements
     private let wishText: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +24,8 @@ final class AddWishCell: UITableViewCell {
         addButton.layer.cornerRadius = Constants.addButtonRadius
         return addButton
     }()
-
-    // MARK: - Lifecycle
+    
+    // MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -37,13 +38,13 @@ final class AddWishCell: UITableViewCell {
         fatalError(Constants.fatalErrorText)
     }
     
-    // MARK: UI Configuration
+    // MARK: - UI Configuration
     private func configureUI() {
         configureWishText()
         configureAddWishButton()
     }
     
-    // MARK: WishText Configuration
+    // MARK: - Wish Text Configuration
     private func configureWishText() {
         contentView.addSubview(wishText)
         wishText.backgroundColor = .white
@@ -52,8 +53,8 @@ final class AddWishCell: UITableViewCell {
         wishText.pinRight(to: contentView.trailingAnchor, Constants.wishTextTrailing)
         wishText.setHeight(Constants.wishTextHeight)
     }
-
-    // MARK: AddWish Button Configuration
+    
+    // MARK: - Add Wish Button Configuration
     private func configureAddWishButton() {
         contentView.addSubview(addWishButton)
         addWishButton.pinTop(to: wishText.bottomAnchor, Constants.addWishTop)
@@ -64,6 +65,7 @@ final class AddWishCell: UITableViewCell {
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed(_:)), for: .touchUpInside)
     }
     
+    // MARK: - Add Wish Button Action
     @objc private func addWishButtonPressed(_ sender: UIButton) {
         let wishTextView = wishText.text
         if let text = wishTextView, !text.isEmpty, text != Constants.wishPrompt {
@@ -77,6 +79,8 @@ final class AddWishCell: UITableViewCell {
 
 // MARK: - UITextViewDelegate
 extension AddWishCell: UITextViewDelegate {
+    
+    // MARK: - TextView Editing Behavior
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .darkGray {
             textView.text = nil

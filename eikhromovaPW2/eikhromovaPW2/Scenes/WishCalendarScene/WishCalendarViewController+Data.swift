@@ -1,16 +1,10 @@
-//
-//  WishCalendarViewController+Data.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 05.12.2024.
-//
-
 import UIKit
 import CoreData
 
 // MARK: - Core Data Methods
 extension WishCalendarViewController {
     
+    // MARK: - Save Event
     internal func saveEvent(_ event: WishEventModel) {
         let context = CoreDataManager.shared.context
         let wishEvent = WishEvent(context: context)
@@ -27,6 +21,7 @@ extension WishCalendarViewController {
         }
     }
     
+    // MARK: - Load Events
     internal func loadEvents() {
         let context = CoreDataManager.shared.context
         let fetchRequest: NSFetchRequest<WishEvent> = WishEvent.fetchRequest()
@@ -46,6 +41,7 @@ extension WishCalendarViewController {
         }
     }
     
+    // MARK: - Delete Event
     internal func deleteEvent(at index: Int) {
         let context = CoreDataManager.shared.context
         let fetchRequest: NSFetchRequest<WishEvent> = WishEvent.fetchRequest()

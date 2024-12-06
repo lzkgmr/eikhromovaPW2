@@ -1,15 +1,9 @@
-//
-//  WishEventCell+UI.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - UI Configuration Extension
 extension WishEventCell {
     
-    // MARK: - Wrap Configuration
+    // MARK: - Wrap View Configuration
     internal func configureWrap() {
         contentView.addSubview(wrapView)
         
@@ -17,11 +11,11 @@ extension WishEventCell {
         wrapView.layer.cornerRadius = Constants.wrapCornerRadius
         wrapView.backgroundColor = UIColor.white
     }
-        
+    
     // MARK: - Title Label Configuration
     internal func configureTitleLabel() {
         wrapView.addSubview(titleLabel)
-
+        
         titleLabel.font = UIFont.systemFont(ofSize: Constants.eventCellTitleFont, weight: .semibold)
         titleLabel.textColor = .black
         titleLabel.numberOfLines = Constants.eventCellNumberOfLines
@@ -42,7 +36,7 @@ extension WishEventCell {
         descriptionLabel.pinLeft(to: wrapView.leadingAnchor, Constants.eventCellDescriptionLeading)
     }
     
-    // MARK: - EndDate Label Configuration
+    // MARK: - Start Date Label Configuration
     internal func configureStartDateLabel() {
         wrapView.addSubview(startDateLabel)
         
@@ -53,9 +47,10 @@ extension WishEventCell {
         startDateLabel.pinLeft(to: wrapView.leadingAnchor, Constants.dateLeading)
     }
     
-    // MARK: - Description Label Configuration
+    // MARK: - End Date Label Configuration
     internal func configureEndDateLabel() {
         wrapView.addSubview(endDateLabel)
+        
         endDateLabel.font = UIFont.systemFont(ofSize: Constants.dateFont, weight: .regular)
         endDateLabel.textColor = UIColor.secondaryLabel
         

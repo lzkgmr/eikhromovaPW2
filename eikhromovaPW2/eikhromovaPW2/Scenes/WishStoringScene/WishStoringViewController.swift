@@ -2,13 +2,13 @@ import UIKit
 
 final class WishStoringViewController: UIViewController {
     
-    // MARK: Fields
+    // MARK: - Properties
     internal var backgroundColor: UIColor?
     private let table: UITableView = UITableView(frame: .zero)
     private var wishArray: [String] = []
     private let defaults = UserDefaults.standard
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = backgroundColor ?? .white
@@ -17,6 +17,8 @@ final class WishStoringViewController: UIViewController {
         loadWishes()
         configureTable()
     }
+    
+    // MARK: - Private Methods
     
     // MARK: Table Configuration
     private func configureTable() {
@@ -34,6 +36,7 @@ final class WishStoringViewController: UIViewController {
         table.register(AddWishCell.self, forCellReuseIdentifier: AddWishCell.reuseId)
     }
     
+    // MARK: Data Persistence Methods
     private func loadWishes() {
         if let savedWishes = defaults.array(forKey: Constants.savedWishesKey) as? [String] {
             wishArray = savedWishes
@@ -44,11 +47,13 @@ final class WishStoringViewController: UIViewController {
         defaults.set(wishArray, forKey: Constants.savedWishesKey)
     }
     
+    // MARK: Navigation Methods
     @objc
     private func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: Edit Wish Window
     private func showEditWindow(for index: Int) {
         let alert = UIAlertController(
             title: Constants.editWindowTitle,
@@ -65,7 +70,7 @@ final class WishStoringViewController: UIViewController {
             style: .default
         ) { [weak self] _ in
             guard let self = self,
-            let newText = alert.textFields?.first?.text, !newText.isEmpty else { return }
+                  let newText = alert.textFields?.first?.text, !newText.isEmpty else { return }
             self.wishArray[index] = newText
             self.saveWishes()
             self.table.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
@@ -79,45 +84,44 @@ final class WishStoringViewController: UIViewController {
     }
 }
 
-
-
-// MARK: - UITableViewDataSource
 extension WishStoringViewController: UITableViewDataSource {
     
+    // MARK: Table Data Source Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return Constants.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            case 0:
-                return 1
-            case 1:
-                return wishArray.count
-            default:
-                return 0
+        case 0:
+            return 1
+        case 1:
+            return wishArray.count
+        default:
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-            case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: AddWishCell.reuseId, for: indexPath) as! AddWishCell
-                cell.addWish = { [weak self] wish in
-                    self?.wishArray.append(wish)
-                    self?.saveWishes()
-                    self?.table.reloadData()
-                }
-                return cell
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: WrittenWishCell.reuseId, for: indexPath) as! WrittenWishCell
-                cell.textLabel?.text = wishArray[indexPath.row]
-                return cell
-            default:
-                return UITableViewCell()
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: AddWishCell.reuseId, for: indexPath) as! AddWishCell
+            cell.addWish = { [weak self] wish in
+                self?.wishArray.append(wish)
+                self?.saveWishes()
+                self?.table.reloadData()
+            }
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WrittenWishCell.reuseId, for: indexPath) as! WrittenWishCell
+            cell.textLabel?.text = wishArray[indexPath.row]
+            return cell
+        default:
+            return UITableViewCell()
         }
     }
     
+    // MARK: Row Deletion Method
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == 1 {
             wishArray.remove(at: indexPath.row)
@@ -127,12 +131,12 @@ extension WishStoringViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
 extension WishStoringViewController: UITableViewDelegate {
     
+    // MARK: Swipe Action Configuration
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard indexPath.section == 1 else { return nil }
-
+        
         let editAction = UIContextualAction(style: .normal, title: Constants.editTitle) { [weak self] _, _, completionHandler in
             self?.showEditWindow(for: indexPath.row)
             completionHandler(true)

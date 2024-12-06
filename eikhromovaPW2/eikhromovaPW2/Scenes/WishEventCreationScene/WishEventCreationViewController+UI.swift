@@ -1,15 +1,10 @@
-//
-//  WishEventCreationViewController+UI.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 05.12.2024.
-//
 
 import UIKit
 
+// MARK: - UI Configuration Extension
 extension WishEventCreationViewController {
     
-    // MARK: - Stack Configuration
+    // MARK: - Stack View Configuration
     internal func configureStack() {
         configureTitleField()
         configureDescriptionField()
@@ -28,7 +23,7 @@ extension WishEventCreationViewController {
         stackView.pinHorizontal(to: view, Constants.stackViewHorizontal)
     }
         
-    // MARK: - Title Field
+    // MARK: - Title Field Configuration
     internal func configureTitleField() {
         view.addSubview(titleField)
         titleField.placeholder = Constants.titleLabelPlaceholder
@@ -40,7 +35,7 @@ extension WishEventCreationViewController {
         titleField.setHeight(Constants.titleLabelHeight)
     }
     
-    // MARK: - Description Field
+    // MARK: - Description Field Configuration
     internal func configureDescriptionField() {
         view.addSubview(descriptionField)
         descriptionField.placeholder = Constants.descriptionLabelPlaceholder
@@ -58,13 +53,13 @@ extension WishEventCreationViewController {
         startDatePicker.datePickerMode = .dateAndTime
     }
     
-    // MARK: End Date Picker Configuration
+    // MARK: - End Date Picker Configuration
     internal func configureEndDatePicker() {
         view.addSubview(endDatePicker)
         endDatePicker.datePickerMode = .dateAndTime
     }
     
-    // MARK: Save Button Configuration
+    // MARK: - Save Button Configuration
     internal func configureSaveButton() {
         view.addSubview(saveButton)
         saveButton.setTitle(Constants.saveButtonTitle, for: .normal)

@@ -2,12 +2,12 @@ import UIKit
 
 final class CustomSlider: UIView {
     
-    // MARK: Fields
+    // MARK: - Properties
     var valueChanged: ((Double) -> Void)?
     var slider = UISlider()
     var titleView = UILabel()
     
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     init(title: String, min: Double, max: Double) {
         super.init(frame: .zero)
         titleView.text = title
@@ -22,6 +22,7 @@ final class CustomSlider: UIView {
         fatalError(Constants.fatalErrorText)
     }
     
+    // MARK: - UI Configuration
     private func configureUI() {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
@@ -43,9 +44,9 @@ final class CustomSlider: UIView {
         ])
     }
     
+    // MARK: - Actions
     @objc
     private func sliderValueChanged()  {
         valueChanged?(Double(slider.value))
     }
-    
 }

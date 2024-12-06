@@ -1,15 +1,9 @@
-//
-//  WishMakerViewController+UI.swift
-//  eikhromovaPW2
-//
-//  Created by Imac on 04.12.2024.
-//
-
 import UIKit
 
+// MARK: - UI Configuration Methods
 extension WishMakerViewController {
     
-    // MARK: - Title Confoguration
+    // MARK: Title Configuration
     internal func configureTitle() {
         let title = UILabel()
         title.text = Constants.titleName
@@ -21,7 +15,7 @@ extension WishMakerViewController {
         title.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.titleTop)
     }
     
-    // MARK: - Description Configuration
+    // MARK: Description Configuration
     internal func configureDescription() {
         let description = UILabel()
         description.numberOfLines = Constants.numberOfLines
@@ -35,7 +29,7 @@ extension WishMakerViewController {
         description.pinTop(to: view.subviews[0].bottomAnchor, Constants.descriptionTop)
     }
     
-    // MARK: - Description List Configuration
+    // MARK: Description List Configuration
     internal func configureDescriptionList() {
         let list = UILabel()
         list.numberOfLines = Constants.numberOfLines
@@ -48,14 +42,14 @@ extension WishMakerViewController {
         list.text = bulletListText
         list.font = UIFont.systemFont(ofSize: Constants.listFontSize)
         list.textColor = UIColor.black
-
+        
         view.addSubview(list)
         list.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor, Constants.listLeading)
         list.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.listTrailing)
         list.pinTop(to: view.subviews[0].bottomAnchor, Constants.listTop)
     }
     
-    // MARK: - Hide Button Configuration
+    // MARK: Hide Button Configuration
     internal func configureAddHideButton() {
         hideButton.setTitle(Constants.hideButtonText, for: .normal)
         hideButton.setTitleColor(.black, for: .normal)
@@ -71,7 +65,7 @@ extension WishMakerViewController {
         hideButton.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, Constants.hideButtonTrailing)
     }
     
-    // MARK: - Sliders Configuration
+    // MARK: Sliders Configuration
     internal func configureSliders() {
         stack.axis = .vertical
         view.addSubview(stack)
@@ -86,7 +80,7 @@ extension WishMakerViewController {
         stack.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.stackBottom)
     }
     
-    //MARK: - Wish Button Configuration
+    // MARK: Add Wish Button Configuration
     internal func configureAddWishButton() {
         view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.buttonHeight)
@@ -102,7 +96,7 @@ extension WishMakerViewController {
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
     }
     
-    // MARK: - Schedule Button Configuration
+    // MARK: Schedule Button Configuration
     internal func configureScheduleButton() {
         view.addSubview(scheduleButton)
         scheduleButton.setHeight(Constants.buttonHeight)
