@@ -2,7 +2,7 @@ import UIKit
 
 // MARK: - Custom UITextField with Padding
 /// A 'UITextField' subclass that provides custom padding for text, editing and placeholder bounds.
-class PaddedTextField: UITextField {
+final class PaddedTextField: UITextField {
     
     // MARK: - Properties
     var textPadding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

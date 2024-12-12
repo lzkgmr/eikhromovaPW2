@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: - AddWishCell
 final class AddWishCell: UITableViewCell {
     
     // MARK: - Constants

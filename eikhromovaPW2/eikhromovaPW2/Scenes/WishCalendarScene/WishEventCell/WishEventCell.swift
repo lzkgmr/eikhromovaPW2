@@ -1,7 +1,7 @@
 import UIKit
 
 // MARK: - WishEventCell
-class WishEventCell: UICollectionViewCell {
+final class WishEventCell: UICollectionViewCell {
     
     // MARK: - Constants
     private enum Constants {

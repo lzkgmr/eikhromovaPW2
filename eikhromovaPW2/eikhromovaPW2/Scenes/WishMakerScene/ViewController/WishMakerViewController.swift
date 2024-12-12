@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: - WishMakerViewController
 final class WishMakerViewController: UIViewController {
     
     // MARK: - Constants

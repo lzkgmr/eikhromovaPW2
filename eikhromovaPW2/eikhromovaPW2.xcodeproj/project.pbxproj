@@ -126,6 +126,26 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		882011E72D0B29E700A4448D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				888F58902CDAB04B007FB800 /* AppDelegate.swift */,
+				888F58992CDAB04D007FB800 /* Assets.xcassets */,
+				888F589B2CDAB04D007FB800 /* LaunchScreen.storyboard */,
+				888F58922CDAB04B007FB800 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		882011E82D0B2A2300A4448D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				88A38FC32D03925400894BB5 /* CoreDataManager.swift */,
+				8822E0FD2D0246FB00B76C04 /* WishEventModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		8822E1002D024A7900B76C04 /* WishEventCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,15 +184,11 @@
 		888F588F2CDAB04B007FB800 /* eikhromovaPW2 */ = {
 			isa = PBXGroup;
 			children = (
-				8822E0FD2D0246FB00B76C04 /* WishEventModel.xcdatamodeld */,
-				8805A4EA2CFFA795009B2B30 /* Scenes */,
-				888F58902CDAB04B007FB800 /* AppDelegate.swift */,
-				888F58922CDAB04B007FB800 /* SceneDelegate.swift */,
-				888F58992CDAB04D007FB800 /* Assets.xcassets */,
-				888F589B2CDAB04D007FB800 /* LaunchScreen.storyboard */,
 				888F589E2CDAB04D007FB800 /* Info.plist */,
 				888F58A82CDAB1D3007FB800 /* UIView+Pin.swift */,
-				88A38FC32D03925400894BB5 /* CoreDataManager.swift */,
+				882011E82D0B2A2300A4448D /* CoreData */,
+				882011E72D0B29E700A4448D /* App */,
+				8805A4EA2CFFA795009B2B30 /* Scenes */,
 			);
 			path = eikhromovaPW2;
 			sourceTree = "<group>";

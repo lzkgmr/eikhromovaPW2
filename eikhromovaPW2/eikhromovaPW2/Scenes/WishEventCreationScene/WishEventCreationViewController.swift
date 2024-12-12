@@ -7,7 +7,7 @@ protocol WishEventCreationDelegate: AnyObject {
 }
 
 // MARK: - WishEventCreationViewController
-class WishEventCreationViewController: UIViewController {
+final class WishEventCreationViewController: UIViewController {
     
     // MARK: - Properties
     private let calendarManager: CalendarEventManager = CalendarManager()

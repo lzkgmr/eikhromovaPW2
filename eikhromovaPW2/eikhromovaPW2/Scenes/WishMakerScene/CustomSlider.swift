@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: - CustomSlider
 final class CustomSlider: UIView {
     
     // MARK: - Constants
